@@ -16,14 +16,14 @@ class ImageTFRecordsCreator(object):
       Args:
       num_shards (int): number of sharded tfrecord
     """
-    self.num_shards = num_shards
+    self.num_shards = num_shards      #shared tf record meaning ->
 
   def _int64_feature(self, value):
     """
     """
-    if not isinstance(value, list):
+    if not isinstance(value, list):   #if is not a list
       value = [value]
-    return tf.train.Feature(int64_list=tf.train.Int64List(value=value))
+    return tf.train.Feature(int64_list=tf.train.Int64List(value=value))       #tf.train has been introduced in TF 2.0
 
   def _bytes_feature(self, value):
     """
