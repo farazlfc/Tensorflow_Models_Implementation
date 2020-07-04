@@ -23,7 +23,7 @@ class ImageTFRecordsCreator(object):
     """
     if not isinstance(value, list):   #if is not a list
       value = [value]
-    return tf.train.Feature(int64_list=tf.train.Int64List(value=value))       #tf.train has been introduced in TF 2.0
+    return tf.train.Feature(int64_list=tf.train.Int64List(value=value))    #create a feature from a data point   #https://towardsdatascience.com/working-with-tfrecords-and-tf-train-example-36d111b3ff4d
 
   def _bytes_feature(self, value):
     """
@@ -96,9 +96,9 @@ class ImageTFRecordsCreator(object):
     Creates three sub-folders, train, eval, test and put resp 
     tfr files
     """
-    raw_files = self._get_file_names(input_folder)
+    raw_files = self._get_file_names(input_folder)   #get dictionary with keys as train,val and test and values as the file names for each
     for dataset_type in ['train', 'eval', 'test']:
-      input_files = [fl for fl in raw_files[dataset_type]]
+      input_files = [fl for fl in raw_files[dataset_type]]  #create a copy
       dataset_resp_dir = os.path.join(tfrecords_outdir, dataset_type)
       shutil.rmtree(dataset_resp_dir, ignore_errors=True)
       os.makedirs(dataset_resp_dir)
