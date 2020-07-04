@@ -37,7 +37,7 @@ class ImageTFRecordsCreator(object):
     """
     """
     # Read the image file.
-    with tf.io.gfile.GFile(filename, 'rb') as f:
+    with tf.io.gfile.GFile(filename, 'rb') as f:   #If all your files are local, you can use the regular Python file API, for I/O.
       image = f.read()
     d_file = os.path.basename(filename)
     if 'NHS' in d_file:
