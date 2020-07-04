@@ -57,4 +57,5 @@ images = np.random.randint(10,90,(1,448,448,3))
 images = tf.dtypes.cast(images, tf.float64)
 temp = build_network(images)
 
-temp.shape
+print(temp.shape)  #outputs a tesnor of size (batch,7*7*25), here 7*7 = grid cells for YOLO, 25 = 2*5 (2 bounding boxes and x,y,h,w,confidence for each) + 15 classes) 
+# so temp can be resized to get predictions.   
